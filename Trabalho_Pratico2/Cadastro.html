@@ -1,0 +1,129 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Netflix Login
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+    .input {
+        max-width: 400px; 
+        background-color: #1a1a1a;
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        outline: none;
+        color: white;
+    }
+
+    .input:focus {
+        animation: rotateShadow 2s infinite linear;
+    }
+
+    @keyframes rotateShadow {
+        0% {
+            box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+        }
+        25% {
+            box-shadow: -2px 2px 8px 1px #aa00ff, 2px -2px 8px 1px #3700ff;
+        }
+        50% {
+            box-shadow: 2px 2px 8px 1px #aa00ff, -2px -2px 8px 1px #3700ff;
+        }
+        75% {
+            box-shadow: 2px -2px 8px 1px #aa00ff, -2px 2px 8px 1px #3700ff;
+        }
+        100% {
+            box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+        }
+    }
+  </style>
+ </head>
+ <body class="bg-black text-white">
+  <div class="relative h-screen w-full">
+   <img alt="Background image with various movie posters" class="absolute inset-0 w-full h-full object-cover" height="1080" src="https://storage.googleapis.com/a1aa/image/6Fk0wGeHKBzgV6fX0vW7AuDVujnvZPK6gK8EqI0fU2NHdYwnA.jpg" width="1920"/>
+   <div class="absolute inset-0 bg-black opacity-50">
+   </div>
+   <div class="relative z-10 flex flex-col items-center justify-center h-full">
+    <div class="mb-8">
+     <h1 class="text-6xl font-bold text-red-600">
+        🔺UaiCine
+     </h1>
+    </div>
+    <div class="bg-black bg-opacity-75 p-8 rounded-md w-80">
+     <h2 class="text-3xl font-bold mb-6">
+      Entrar
+     </h2>
+     <form id="signupForm">
+      <div class="mb-4">
+       <input id="email" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Email ou número de celular" type="text" required/>
+      </div>
+      <div class="mb-4">
+       <input id="password" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Senha" type="password" required/>
+      </div>
+      <div class="mb-4">
+       <button class="w-full p-3 bg-red-600 rounded-md text-white font-bold hover:bg-red-700" type="submit">
+        Entrar
+       </button>
+      </div>
+      <div class="flex items-center justify-between mb-4">
+       <hr class="w-full border-gray-600"/>
+       <span class="px-2 text-gray-400">
+        OU 
+       </span>
+       <hr class="w-full border-gray-600"/>
+      </div>
+      <div class="mb-4">
+       <button class="w-full p-3 bg-gray-600 rounded-md text-white font-bold hover:bg-gray-700" type="button">
+        Usar um código de acesso
+       </button>
+      </div>
+      <div class="flex items-center justify-between mb-4">
+       <a class="text-gray-400 hover:underline" href="#">
+        Esqueceu a senha?
+       </a>
+      </div>
+      <div class="flex items-center mb-4">
+       <input class="mr-2" id="remember" type="checkbox"/>
+       <label class="text-gray-400" for="remember">
+        Lembre-se de mim
+       </label>
+      </div>
+      <div class="text-center">
+       <span class="text-gray-400">
+        Novo por aqui?
+        <a class="text-white hover:underline" href="Validação.html">
+         Assine agora.
+        </a>
+       </span>
+      </div>
+     </form>
+    </div>
+      </a>
+     </p>
+    </div>
+   </div>
+  </div>
+  <script>
+    document.getElementById('signupForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Simulação de cadastro
+        const storedEmail = localStorage.getItem('userEmail');
+        const storedPassword = localStorage.getItem('userPassword');
+
+        if (email === storedEmail && password === storedPassword) {
+            // Redirecionar para a página index
+            window.location.href = 'index.html';
+        } else {
+            alert('E-mail ou senha incorretos.');
+        }
+    });
+  </script>
+ </body>
+</html>

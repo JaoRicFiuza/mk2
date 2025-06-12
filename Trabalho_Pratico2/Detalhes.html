@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ...existing code... -->
+    <title>Perfil do Usuário</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            color: #343a40;
+        }
+        .btn-back {
+            margin-top: 20px;
+        }
+        /* From Uiverse.io by cssbuttons-io */
+        .c-button {
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 0.9em 1.6em;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            z-index: 1;
+        }
+        .c-button--gooey {
+            color: #343a40;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 4px solid #343a40;
+            border-radius: 0;
+            position: relative;
+            transition: all 700ms ease;
+        }
+        .c-button--gooey .c-button__blobs {
+            height: 100%;
+            filter: url(#goo);
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: -3px;
+            right: -1px;
+            z-index: -1;
+        }
+        .c-button--gooey .c-button__blobs div {
+            background-color: #343a40;
+            width: 34%;
+            height: 100%;
+            border-radius: 100%;
+            position: absolute;
+            transform: scale(1.4) translateY(125%) translateZ(0);
+            transition: all 700ms ease;
+        }
+        .c-button--gooey .c-button__blobs div:nth-child(1) {
+            left: -5%;
+        }
+        .c-button--gooey .c-button__blobs div:nth-child(2) {
+            left: 30%;
+            transition-delay: 60ms;
+        }
+        .c-button--gooey .c-button__blobs div:nth-child(3) {
+            left: 66%;
+            transition-delay: 25ms;
+        }
+        .c-button--gooey:hover {
+            color: #fff;
+        }
+        .c-button--gooey:hover .c-button__blobs div {
+            transform: scale(1.4) translateY(0) translateZ(0);
+        }
+    </style>
+    <!-- ...existing code... -->
+</head>
+<body>
+    <!-- ...existing code... -->
+    <div class="container mt-5">
+        <div class="author-details card mb-4">
+            <div class="card-body">
+                <h1 class="card-title">Detalhes do Autor</h1>
+                <p class="card-text"><strong>Nome:</strong> João Ricardo Fiuza</p>
+                <p class="card-text"><strong>Biografia:</strong> João Ricardo é um aluno de eng de Software com muita vontade para aprender cada vez mais...</p>
+                <p class="card-text"><strong>Contato:</strong> joaoricfiuza@gmail.com</p>
+            </div>
+        </div>
+        <div class="user-profile card">
+            <div class="card-body">
+                <h1 class="card-title">Perfil do Usuário</h1>
+                <p class="card-text"><strong>Identificador do perfil:</strong> <span id="profileId"></span></p>
+                <p class="card-text"><strong>Nome do Usuário:</strong> <span id="profileName"></span></p>
+                <p class="card-text"><strong>Curso do usuário:</strong> <span id="profileCourse"></span></p>
+                <p class="card-text"><strong>e-mail:</strong> <span id="profileEmail"></span></p>
+                <p class="card-text"><strong>Link Facebook:</strong> <a id="profileFacebook" href=""></a></p>
+                <p class="card-text"><strong>Link Twitter:</strong> <a id="profileTwitter" href=""></a></p>
+                <p class="card-text"><strong>Link Instagram:</strong> <a id="profileInstagram" href=""></a></p>
+                <p class="card-text"><strong>Mini biografia:</strong> <span id="profileBio"></span></p>
+                <a href="index.html" class="c-button c-button--gooey">Voltar à Página Inicial
+                    <div class="c-button__blobs">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; height: 0; width: 0;">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                <feBlend in="SourceGraphic" in2="goo"></feBlend>
+            </filter>
+        </defs>
+    </svg>
+    <script>
+        document.getElementById('profileId').textContent = localStorage.getItem('userId');
+        document.getElementById('profileName').textContent = localStorage.getItem('userName');
+        document.getElementById('profileCourse').textContent = localStorage.getItem('userCourse');
+        document.getElementById('profileEmail').textContent = localStorage.getItem('userEmail');
+        document.getElementById('profileFacebook').textContent = localStorage.getItem('userFacebook');
+        document.getElementById('profileFacebook').href = localStorage.getItem('userFacebook');
+        document.getElementById('profileTwitter').textContent = localStorage.getItem('userTwitter');
+        document.getElementById('profileTwitter').href = localStorage.getItem('userTwitter');
+        document.getElementById('profileInstagram').textContent = localStorage.getItem('userInstagram');
+        document.getElementById('profileInstagram').href = localStorage.getItem('userInstagram');
+        document.getElementById('profileBio').textContent = localStorage.getItem('userBio');
+    </script>
+    <!-- ...existing code... -->
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Filmes Favoritos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* Copiar estilos do index.html */
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            border-radius: 10px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background-color: #343a40;
+            border-color: #343a40;
+            border-radius: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+        .btn-outline-light {
+            border-radius: 20px;
+            border-width: 2px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            color: #343a40; /* Alterado para #343a40 */
+            border-color: #343a40; /* Alterado para #343a40 */
+        }
+        .btn-outline-light:hover {
+            background-color: #ffffff;
+            color: #343a40;
+        }
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .navbar-brand img {
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        .navbar-brand img:hover {
+            transform: scale(1.1);
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand span {
+            margin-left: 10px;
+        }
+        /* From Uiverse.io by cssbuttons-io */
+        .c-button {
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 0.9em 1.6em;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            z-index: 1;
+        }
+
+        .c-button--gooey {
+            color: #343a40; /* Alterado para #343a40 */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 4px solid #343a40; /* Alterado para #343a40 */
+            border-radius: 0;
+            position: relative;
+            transition: all 700ms ease;
+        }
+
+        .c-button--gooey .c-button__blobs {
+            height: 100%;
+            filter: url(#goo);
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: -3px;
+            right: -1px;
+            z-index: -1;
+        }
+
+        .c-button--gooey .c-button__blobs div {
+            background-color: #343a40; /* Alterado para #343a40 */
+            width: 34%;
+            height: 100%;
+            border-radius: 100%;
+            position: absolute;
+            transform: scale(1.4) translateY(125%) translateZ(0);
+            transition: all 700ms ease;
+        }
+
+        .c-button--gooey .c-button__blobs div:nth-child(1) {
+            left: -5%;
+        }
+
+        .c-button--gooey .c-button__blobs div:nth-child(2) {
+            left: 30%;
+            transition-delay: 60ms;
+        }
+
+        .c-button--gooey .c-button__blobs div:nth-child(3) {
+            left: 66%;
+            transition-delay: 25ms;
+        }
+
+        .c-button--gooey:hover {
+            color: #fff;
+        }
+
+        .c-button--gooey:hover .c-button__blobs div {
+            transform: scale(1.4) translateY(0) translateZ(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="Imagem do WhatsApp de 2024-12-05 à(s) 12.19.21_7906fbf8.jpg" alt="UaiCine Logo" height="40"> 
+                <span>🔺UaiCine</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" title="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <button class="c-button c-button--gooey">Home
+                                <div class="c-button__blobs">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="explore.html">
+                            <button class="c-button c-button--gooey">Explorar Séries
+                                <div class="c-button__blobs">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="favoritos.html">
+                            <button class="c-button c-button--gooey">Favoritos
+                                <div class="c-button__blobs">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <section class="section-4 mt-5">
+            <h2 class="text-center mb-4">Meus Filmes Favoritos</h2>
+            <div class="row" id="meus-filmes-favoritos">
+                <!-- Conteúdo gerado pela API -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-3 mt-5">
+        <div class="container">
+            <p class="text-center">&copy; 2024 🔺UaiCine</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const apiKey = '1806a35f823004e6eb40d85e4b7b6fc3';
+
+        async function fetchFavoriteMovies() {
+            try {
+                const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies')) || [];
+                const promises = favoriteMovies.map(movieId => fetch(`https://api.themoviedb.org/3/movie/${movieId}?api_key=${apiKey}&language=pt-BR`));
+                const responses = await Promise.all(promises);
+                const movies = await Promise.all(responses.map(response => response.json()));
+                displayMovies(movies, 'meus-filmes-favoritos');
+            } catch (error) {
+                console.error('Erro ao buscar filmes favoritos:', error);
+            }
+        }
+
+        function displayMovies(movies, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            let row;
+            movies.forEach((movie, index) => {
+                if (index % 4 === 0) {
+                    row = document.createElement('div');
+                    row.className = 'row';
+                    container.appendChild(row);
+                }
+                const movieCard = `
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${movie.title}</h5>
+                                <a href="https://www.themoviedb.org/movie/${movie.id}" class="btn btn-primary" onclick="fetchSeriesDetails(${movie.id}); fetchSeriesCredits(${movie.id});">Ver Detalhes</a>
+                                <button class="btn btn-outline-light" onclick="removeFromFavorites(${movie.id})">Remover</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                row.innerHTML += movieCard;
+            });
+        }
+
+        function removeFromFavorites(movieId) {
+            // Lógica para remover o filme dos favoritos
+            console.log(`Filme ${movieId} removido dos favoritos`);
+            // Simulação de remoção do filme dos favoritos
+            const container = document.getElementById('meus-filmes-favoritos');
+            const movieCard = container.querySelector(`button[onclick="removeFromFavorites(${movieId})"]`).closest('.col-md-3');
+            movieCard.remove();
+            // Atualizar a lista de favoritos no armazenamento local ou servidor
+            let favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies')) || [];
+            favoriteMovies = favoriteMovies.filter(id => id !== movieId);
+            localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchFavoriteMovies();
+        });
+    </script>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; height: 0; width: 0;">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                <feBlend in="SourceGraphic" in2="goo"></feBlend>
+            </filter>
+        </defs>
+    </svg>
+</body>
+</html>

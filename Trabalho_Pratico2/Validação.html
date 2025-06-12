@@ -1,0 +1,124 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔺UaiCine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .input {
+            max-width: 400px; 
+            background-color: #1a1a1a;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            outline: none;
+            color: white;
+            margin: 0 auto; 
+            display: block; 
+        }
+
+        .input:focus {
+            animation: rotateShadow 2s infinite linear;
+        }
+
+        @keyframes rotateShadow {
+            0% {
+                box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+            }
+            25% {
+                box-shadow: -2px 2px 8px 1px #aa00ff, 2px -2px 8px 1px #3700ff;
+            }
+            50% {
+                box-shadow: 2px 2px 8px 1px #aa00ff, -2px -2px 8px 1px #3700ff;
+            }
+            75% {
+                box-shadow: 2px -2px 8px 1px #aa00ff, -2px 2px 8px 1px #3700ff;
+            }
+            100% {
+                box-shadow: -2px -2px 8px 1px #aa00ff, 2px 2px 8px 1px #3700ff;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white">
+    <div class="relative h-screen w-full">
+        <img alt="Background image with various movie posters" class="absolute inset-0 w-full h-full object-cover" height="1080" src="https://storage.googleapis.com/a1aa/image/6Fk0wGeHKBzgV6fX0vW7AuDVujnvZPK6gK8EqI0fU2NHdYwnA.jpg" width="1920"/>
+        <div class="absolute inset-0 bg-black opacity-50"></div>
+        <div class="relative z-10 flex flex-col items-center justify-center h-full">
+            <div class="mb-8">
+                <h1 class="text-6xl font-bold text-red-600">🔺UaiCine</h1>
+            </div>
+            <div class="bg-black bg-opacity-75 p-8 rounded-md w-80">
+                <h2 class="text-3xl font-bold mb-6">Cadastrar</h2>
+                <form onsubmit="validarFormulario(event)">
+                    <div class="mb-4">
+                        <input type="number" id="userId" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Número sequencial" required/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" id="userName" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Nome do Usuário" required/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="text" id="userCourse" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Curso do usuário" required/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="email" id="userEmail" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="E-mail" required/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="password" id="userPassword" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Senha" required/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="url" id="userFacebook" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Link Facebook"/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="url" id="userTwitter" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Link Twitter"/>
+                    </div>
+                    <div class="mb-4">
+                        <input type="url" id="userInstagram" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Link Instagram"/>
+                    </div>
+                    <div class="mb-4">
+                        <textarea id="userBio" class="w-full p-3 bg-gray-700 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-red-600" placeholder="Mini biografia" rows="4"></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <button type="submit" class="w-full p-3 bg-red-600 rounded-md text-white font-bold hover:bg-red-700">Cadastrar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function validarFormulario(event) {
+            event.preventDefault();
+            
+            const userId = document.getElementById('userId').value;
+            const userName = document.getElementById('userName').value;
+            const userCourse = document.getElementById('userCourse').value;
+            const userEmail = document.getElementById('userEmail').value;
+            const userPassword = document.getElementById('userPassword').value;
+            const userFacebook = document.getElementById('userFacebook').value;
+            const userTwitter = document.getElementById('userTwitter').value;
+            const userInstagram = document.getElementById('userInstagram').value;
+            const userBio = document.getElementById('userBio').value;
+
+            if (!userId || !userName || !userEmail || !userPassword) {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+                return;
+            }
+
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('userName', userName);
+            localStorage.setItem('userCourse', userCourse);
+            localStorage.setItem('userEmail', userEmail);
+            localStorage.setItem('userPassword', userPassword);
+            localStorage.setItem('userFacebook', userFacebook);
+            localStorage.setItem('userTwitter', userTwitter);
+            localStorage.setItem('userInstagram', userInstagram);
+            localStorage.setItem('userBio', userBio);
+
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = 'Cadastro.html';
+        }
+    </script>
+</body>
+</html>

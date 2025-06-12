@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔺UaiCine - Filmes do bão</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: none;
+            border-radius: 10px;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+        }
+        .card-text {
+            font-size: 0.9rem;
+        }
+        .btn-primary {
+            background-color: #343a40;
+            border-color: #343a40;
+            border-radius: 20px;
+        }
+        .btn-primary:hover {
+            background-color: #343a40;
+            border-color: #343a40;
+        }
+        .btn-outline-light {
+            border-radius: 20px;
+            border-width: 2px;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn-outline-light:hover {
+            background-color: #ffffff;
+            color: #343a40;
+        }
+        footer {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+            background-color: #343a40;
+            border-radius: 50%;
+        }
+        .carousel-indicators li {
+            background-color: #343a40;
+        }
+        .carousel-indicators .active {
+            background-color: #343a40;
+        }
+        .navbar-brand img {
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+        .navbar-brand img:hover {
+            transform: scale(1.1);
+        }
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand span {
+            margin-left: 10px;
+        }
+        .input {
+            max-width: 400px; 
+            background-color: #1a1a1a;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+            outline: none;
+            color: white;
+            margin: 0 auto; 
+            display: block; 
+        }
+
+        .input:focus {
+            animation: rotateShadow 2s infinite linear;
+        }
+
+        @keyframes rotateShadow {
+            0% {
+                box-shadow: -2px -2px 8px 1px #e63104, 2px 2px 8px 1px #3700ff;
+            }
+            25% {
+                box-shadow: -2px 2px 8px 1px #e63104, 2px -2px 8px 1px #3700ff;
+            }
+            50% {
+                box-shadow: 2px 2px 8px 1px #e63104, -2px -2px 8px 1px #3700ff;
+            }
+            75% {
+                box-shadow: 2px -2px 8px 1px #e63104, -2px 2px 8px 1px #3700ff;
+            }
+            100% {
+                box-shadow: -2px -2px 8px 1px #e63104, 2px 2px 8px 1px #3700ff;
+            }
+        }
+
+        .c-button {
+            color: #000;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 0.9em 1.6em;
+            cursor: pointer;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+            z-index: 1;
+        }
+
+        .c-button--gooey {
+            color: #343a40; 
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 4px solid #343a40; 
+            border-radius: 0;
+            position: relative;
+            transition: all 700ms ease;
+        }
+
+        .c-button--gooey .c-button__blobs {
+            height: 100%;
+            filter: url(#goo);
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: -3px;
+            right: -1px;
+            z-index: -1;
+        }
+
+        .c-button--gooey .c-button__blobs div {
+            background-color: #343a40; 
+            width: 34%;
+            height: 100%;
+            border-radius: 100%;
+            position: absolute;
+            transform: scale(1.4) translateY(125%) translateZ(0);
+            transition: all 700ms ease;
+        }
+
+        .c-button--gooey .c-button__blobs div:nth-child(1) {
+            left: -5%;
+        }
+
+        .c-button--gooey .c-button__blobs div:nth-child(2) {
+            left: 30%;
+            transition-delay: 60ms;
+        }
+
+        .c-button--gooey .c-button__blobs div:nth-child(3) {
+            left: 66%;
+            transition-delay: 25ms;
+        }
+
+        .c-button--gooey:hover {
+            color: #fff;
+        }
+
+        .c-button--gooey:hover .c-button__blobs div {
+            transform: scale(1.4) translateY(0) translateZ(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#">
+                <img src="Imagem do WhatsApp de 2024-12-05 à(s) 12.19.21_7906fbf8.jpg" alt="UaiCine Logo" height="40"> 
+                <span>🔺UaiCine</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNav" title="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">
+                            <button class="c-button c-button--gooey">Home
+                                <div class="c-button__blobs">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="explore.html">
+                            <button class="c-button c-button--gooey">Explorar Séries
+                                <div class="c-button__blobs">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </button>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favoritos.html">
+                            <button class="c-button c-button--gooey">Favoritos
+                                <div class="c-button__blobs">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </button>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" style="display: block; height: 0; width: 0;">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="goo"></feColorMatrix>
+                <feBlend in="SourceGraphic" in2="goo"></feBlend>
+            </filter>
+        </defs>
+    </svg>
+
+    <!-- Carrossel principal -->
+    <div id="mainCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicadores do carrossel -->
+        <ol class="carousel-indicators">
+            <li data-target="#mainCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#mainCarousel" data-slide-to="1"></li>
+            <li data-target="#mainCarousel" data-slide-to="2"></li>
+            <li data-target="#mainCarousel" data-slide-to="3"></li>
+            <li data-target="#mainCarousel" data-slide-to="4"></li>
+        </ol>
+        <!-- Itens do carrossel -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://via.placeholder.com/1920x600" class="d-block w-100" alt="Slide 1">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Filme 1</h5>
+                    <p>Descrição do Filme 1.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1920x600" class="d-block w-100" alt="Slide 2">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Filme 2</h5>
+                    <p>Descrição do Filme 2.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1920x600" class="d-block w-100" alt="Slide 3">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Filme 3</h5>
+                    <p>Descrição do Filme 3.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1920x600" class="d-block w-100" alt="Slide 4">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Filme 4</h5>
+                    <p>Descrição do Filme 4.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://via.placeholder.com/1920x600" class="d-block w-100" alt="Slide 5">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>Filme 5</h5>
+                    <p>Descrição do Filme 5.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Controles do carrossel -->
+        <a class="carousel-control-prev" href="#mainCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#mainCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+        </a>
+    </div>
+
+    <main class="container mt-5">
+        <section class="section-1">
+            <h2 class="text-center mb-4">Recomendados</h2>
+            <div id="series-populares" class="carousel slide" data-ride="carousel" aria-label="Carrossel de séries populares">
+                <div class="carousel-inner" id="carousel-inner-populares">
+                    <!-- Conteúdo gerado pela API -->
+                </div>
+                <a class="carousel-control-prev" href="#series-populares" role="button" data-slide="prev" aria-label="Anterior">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#series-populares" role="button" data-slide="next" aria-label="Próximo">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Próximo</span>
+                </a>
+            </div>
+        </section>
+
+        <section class="search-section mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="text-center mb-4">Pesquisar</h2>
+                        <input type="text" id="searchInput" class="input" placeholder="Pesquise por filmes ou séries">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-2 mt-5">
+            <h2 class="text-center mb-4">Adicionados Recentemente</h2>
+            <div class="row" id="series-recentes">
+                <!-- Conteúdo gerado pela API -->
+            </div>
+            <div class="row" id="filmes-favoritas">
+                <!-- Conteúdo gerado pela API -->
+            </div>
+        </section>
+
+        <section class="section-3 mt-5">
+            <h2 class="text-center mb-4">Sobre o Site</h2>
+            <p class="text-center">Este site foi criado por <strong><a href="Detalhes.html" style="color: #343a40;">João Ricardo Fiuza</a></strong> para o projeto de desenvolvimento web.</p>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-light py-3 mt-5">
+        <div class="container">
+            <p class="text-center">&copy; 2024 🔺UaiCine</p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const seriesPopulares = document.getElementById('series-populares');
+        const seriesRecentes = document.getElementById('series-recentes');
+        const filmesFavoritas = document.getElementById('filmes-favoritas');
+
+        searchInput.addEventListener('input', () => {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            filterContent(searchTerm, seriesPopulares);
+            filterContent(searchTerm, seriesRecentes);
+            filterContent(searchTerm, filmesFavoritas);
+            fetchSeries(searchTerm);
+        });
+
+        function filterContent(searchTerm, container) {
+            const cards = container.querySelectorAll('.card');
+            cards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                card.style.display = title.includes(searchTerm) ? 'block' : 'none';
+            });
+        }
+
+        const apiKey = '1806a35f823004e6eb40d85e4b7b6fc3';
+
+        async function fetchMovies() {
+            try {
+                const popularesResponse = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR&page=1`);
+                const recentesResponse = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=pt-BR&page=1`);
+                const favoritasResponse = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=pt-BR&page=1`);
+
+                const popularesData = await popularesResponse.json();
+                const recentesData = await recentesResponse.json();
+                const favoritasData = await favoritasResponse.json();
+
+                displayMovies(popularesData.results, 'carousel-inner-populares', true);
+                displayMovies(recentesData.results, 'series-recentes');
+                displayMovies(favoritasData.results, 'filmes-favoritas');
+            } catch (error) {
+                console.error('Erro ao buscar filmes:', error);
+            }
+        }
+
+        async function fetchPopularMovies() {
+            const options = { method: 'GET', headers: { accept: 'application/json' } };
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&api_key=${apiKey}`, options);
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Erro ao buscar filmes populares:', error);
+            }
+        }
+
+        async function fetchSeries(searchTerm) {
+            const options = { method: 'GET', headers: { accept: 'application/json' } };
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/search/tv?api_key=${apiKey}&query=${searchTerm}&include_adult=false&language=pt-BR&page=1`, options);
+                const data = await response.json();
+                displayMovies(data.results, 'series-recentes');
+            } catch (error) {
+                console.error('Erro ao buscar séries:', error);
+            }
+        }
+
+        async function fetchSeriesDetails(seriesId) {
+            const options = { method: 'GET', headers: { accept: 'application/json' } };
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/tv/${seriesId}?api_key=${apiKey}&language=pt-BR`, options);
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Erro ao buscar detalhes da série:', error);
+            }
+        }
+
+        async function fetchSeriesCredits(seriesId) {
+            const options = { method: 'GET', headers: { accept: 'application/json' } };
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/tv/${seriesId}/credits?api_key=${apiKey}&language=pt-BR`, options);
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Erro ao buscar créditos da série:', error);
+            }
+        }
+
+        async function fetchCollectionImages(collectionId) {
+            const options = { method: 'GET', headers: { accept: 'application/json' } };
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/collection/${collectionId}/images?api_key=${apiKey}`, options);
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.error('Erro ao buscar imagens da coleção:', error);
+            }
+        }
+
+        function addToFavorites(movieId) {
+            let favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies')) || [];
+            if (!favoriteMovies.includes(movieId)) {
+                favoriteMovies.push(movieId);
+                localStorage.setItem('favoriteMovies', JSON.stringify(favoriteMovies));
+                alert('Filme adicionado aos favoritos!');
+            } else {
+                alert('Filme já está nos favoritos!');
+            }
+        }
+
+        function displayMovies(movies, containerId, isCarousel = false) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            let row;
+            movies.forEach((movie, index) => {
+                if (index % 4 === 0) {
+                    row = document.createElement('div');
+                    row.className = 'row';
+                    container.appendChild(row);
+                }
+                const isActive = isCarousel && index === 0 ? 'active' : '';
+                const movieCard = `
+                    <div class="col-md-3 mb-4 ${isActive}">
+                        <div class="card">
+                            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" class="card-img-top" alt="${movie.title}">
+                            <div class="card-body">
+                                <h5 class="card-title">${movie.title}</h5>
+                                <a href="https://www.themoviedb.org/movie/${movie.id}" class="btn btn-primary" onclick="fetchSeriesDetails(${movie.id}); fetchSeriesCredits(${movie.id});">Ver Detalhes</a>
+                                <a href="#" class="btn btn-outline-light" style="background-color: #343a40; color: white;" onclick="addToFavorites(${movie.id})">Adicionar aos Favoritos</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                row.innerHTML += movieCard;
+            });
+        }
+
+        async function fetchCarouselMovies() {
+            try {
+                const response = await fetch(`https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}&language=pt-BR&page=1`);
+                const data = await response.json();
+                displayCarouselMovies(data.results);
+            } catch (error) {
+                console.error('Erro ao buscar filmes para o carrossel:', error);
+            }
+        }
+
+        function displayCarouselMovies(movies) {
+            const carouselInner = document.querySelector('#mainCarousel .carousel-inner');
+            const carouselIndicators = document.querySelector('#mainCarousel .carousel-indicators');
+            carouselInner.innerHTML = '';
+            carouselIndicators.innerHTML = '';
+
+            movies.slice(0, 3).forEach((movie, index) => {
+                const isActive = index === 0 ? 'active' : '';
+                const indicator = `<li data-target="#mainCarousel" data-slide-to="${index}" class="${isActive}"></li>`;
+                const item = `
+                    <div class="carousel-item ${isActive}">
+                        <img src="https://image.tmdb.org/t/p/w1920_and_h800_multi_faces${movie.backdrop_path}" class="d-block w-100" alt="${movie.title}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>${movie.title}</h5>
+                            <p>${movie.overview}</p>
+                        </div>
+                    </div>
+                `;
+                carouselIndicators.innerHTML += indicator;
+                carouselInner.innerHTML += item;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchMovies();
+            fetchCarouselMovies();
+            fetchPopularMovies();
+        });
+    </script>
+</body>
+</html>
